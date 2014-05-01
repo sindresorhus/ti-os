@@ -1,0 +1,34 @@
+{
+  "name": "ti-os",
+  "version": "0.0.0",
+  "description": "Platform conditional utility for cross-platform Titanium apps",
+  "license": "MIT",
+  "repository": "sindresorhus/ti-os",
+  "author": {
+    "name": "Sindre Sorhus",
+    "email": "sindresorhus@gmail.com",
+    "url": "http://sindresorhus.com"
+  },
+  "engines": {
+    "node": ">=0.10.0"
+  },
+  "scripts": {
+    "test": "mocha"
+  },
+  "files": [
+    "index.js"
+  ],
+  "keywords": [
+    "ti",
+    "titanium",
+    "mobile",
+    "os",
+    "platform",
+    "check",
+    "util"
+  ],
+  "devDependencies": {
+    "mocha": "*",
+    "sandboxed-module": "^0.3.0"
+  }
+}
