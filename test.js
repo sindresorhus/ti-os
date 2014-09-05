@@ -3,7 +3,7 @@ var assert = require('assert');
 var SandboxedModule = require('sandboxed-module');
 
 function customRequire(osname, height) {
-	return SandboxedModule.require('./index', {
+	return SandboxedModule.require('./', {
 		globals: {
 			Ti: {
 				Platform: {
