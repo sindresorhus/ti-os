@@ -1,13 +1,12 @@
-'use strict';
-var assert = require('assert');
-var SandboxedModule = require('sandboxed-module');
+import test from 'ava';
+import SandboxedModule from 'sandboxed-module';
 
 function customRequire(osname, height) {
-	return SandboxedModule.require('./', {
+	return SandboxedModule.require('.', {
 		globals: {
 			Ti: {
 				Platform: {
-					osname: osname,
+					osname,
 					displayCaps: {
 						platformHeight: height || 0
 					}
@@ -17,22 +16,22 @@ function customRequire(osname, height) {
 	});
 }
 
-it('should match for defined platform', function () {
-	assert(customRequire('iphone')({iphone: true}));
-	assert(customRequire('iphone').iphone);
+test('matches for defined platform', t => {
+	t.true(customRequire('iphone')({iphone: true}));
+	t.true(customRequire('iphone').iphone);
 
-	assert(customRequire('iphone')({ios: true}));
-	assert(customRequire('iphone').ios);
+	t.true(customRequire('iphone')({ios: true}));
+	t.true(customRequire('iphone').ios);
 
-	assert(customRequire('iphone', 568)({iphone5: true}));
-	assert(customRequire('iphone', 568).iphone5);
+	t.true(customRequire('iphone', 568)({iphone5: true}));
+	t.true(customRequire('iphone', 568).iphone5);
 
-	assert(customRequire('ipad')({ipad: true}));
-	assert(customRequire('ipad').ipad);
+	t.true(customRequire('ipad')({ipad: true}));
+	t.true(customRequire('ipad').ipad);
 
-	assert(customRequire('android')({android: true}));
-	assert(customRequire('android').android);
-	assert(!customRequire('android').ios);
-	assert(customRequire('android')({iphone: true, android: true}));
-	assert(customRequire('android')({default: true}));
+	t.true(customRequire('android')({android: true}));
+	t.true(customRequire('android').android);
+	t.false(customRequire('android').ios);
+	t.true(customRequire('android')({iphone: true, android: true}));
+	t.true(customRequire('android')({default: true}));
 });

@@ -7,29 +7,27 @@
 
 In the `Resources` directory:
 
-```sh
-$ npm install --save ti-os
+```
+$ npm install ti-os
 ```
 
 
 ## Usage
 
 ```js
-var os = require('node_modules/ti-os/index');
+const os = require('node_modules/ti-os/index');
 
-// use the properties for if statements
+// Use the properties for if statements
 if (os.iphone) {
 	console.log('Running on iPhone');
 }
 
-// and the method for inline conditionals
-var win = Ti.UI.createWindow({
+// And the method for inline conditionals
+const win = Ti.UI.createWindow({
 	title: os({
-		iphone5: function () {
-			return 'Yo iPhone 5';
-		},
+		iphone5: () => 'Yo iPhone 5',
 		ios: 'Yo iOS',
-		default: 'Yo' // the rest of the platforms
+		default: 'Yo' // The rest of the platforms
 	})
 });
 ```
@@ -41,11 +39,10 @@ var win = Ti.UI.createWindow({
 
 #### platform
 
-*Required*  
-Type: `object`  
-Keys: `iphone5`, `iphone`, `ipad`, `ios`, `android`, `default`
+Type: `Object`<br>
+Keys: `iphone5` `iphone` `ipad` `ios` `android` `default`
 
-`default` will be used if none of the platforms match.
+The `default` will be used if none of the platforms match.
 
 Values can be a `string` or `function`. If it's a `function` it will be called.
 
@@ -58,4 +55,4 @@ Values can be a `string` or `function`. If it's a `function` it will be called.
 
 ## License
 
-MIT © [Sindre Sorhus](http://sindresorhus.com)
+MIT © [Sindre Sorhus](https://sindresorhus.com)
